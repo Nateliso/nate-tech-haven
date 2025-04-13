@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/products");
+const userRoutes = require("./routes/users");
 
 const app = express();
 
@@ -12,6 +13,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB Atlas"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 
 app.get("/", (req, res) => {

@@ -1,7 +1,7 @@
 node_modules
 backend/.env
 
- - `backend/.gitignore` (if separate):  
+ backend/.gitignore  
 
  node_modules
 .env

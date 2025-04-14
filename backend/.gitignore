@@ -1,7 +1,5 @@
 node_modules
 backend/.env
 
- backend/.gitignore  
-
- node_modules
+node_modules
 .env

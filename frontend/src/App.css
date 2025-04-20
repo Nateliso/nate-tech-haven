@@ -143,3 +143,26 @@
 .auth-form a {
   color: #007bff;
 }
+
+.cart {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cart-item h3 {
+  margin: 0 0 10px;
+}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Added Link import
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -11,14 +11,17 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting signup:", { email, name });
     try {
-      await axios.post("http://localhost:3000/api/users/signup", {
+      const response = await axios.post("http://localhost:3000/api/users/signup", {
         email,
         password,
         name,
       });
-      navigate("/login"); // Redirect to login after signup
+      console.log("Signup response:", response.data);
+      navigate("/login", { replace: true });
     } catch (err) {
+      console.error("Signup error:", err.response?.data || err.message);
       setError(err.response?.data?.message || "Signup failed");
     }
   };
@@ -58,7 +61,7 @@ function Signup() {
         <button type="submit">Sign Up</button>
       </form>
       <p>
-        Already have an account? <a href="/login">Log in</a>
+        Already have an account? <Link to="/login">Log in</Link>
       </p>
     </div>
   );

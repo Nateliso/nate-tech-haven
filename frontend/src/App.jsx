@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Cart from "./components/Cart";
 import "./App.css";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const location = useLocation();
 
   useEffect(() => {
+    console.log("Navigated to:", location.pathname, "State:", location.state);
     axios
       .get("http://localhost:3000/api/products")
       .then((response) => {
@@ -20,11 +23,28 @@ function App() {
         console.error("Error fetching products:", error);
         setError("Failed to load products");
       });
-  }, []);
+  }, [location]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     setToken(null);
+  };
+
+  const addToCart = async (productId, type) => {
+    if (!token) {
+      alert("Please log in to add to cart");
+      return;
+    }
+    try {
+      await axios.post(
+        "http://localhost:3000/api/cart",
+        { productId, type, quantity: 1 },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      alert("Added to cart!");
+    } catch (err) {
+      alert(err.response?.data?.message || "Failed to add to cart");
+    }
   };
 
   return (
@@ -33,6 +53,7 @@ function App() {
         <h1>Nate’s Tech Haven</h1>
         <nav>
           <Link to="/">Home</Link>
+          <Link to="/cart">Cart</Link>
           {token ? (
             <button onClick={handleLogout}>Log Out</button>
           ) : (
@@ -49,6 +70,7 @@ function App() {
           element={
             <>
               {error && <p className="error">{error}</p>}
+              <p>Debug: Path {location.pathname}</p>
               <div className="product-grid">
                 {products.length === 0 && !error ? (
                   <p>Loading products...</p>
@@ -65,6 +87,12 @@ function App() {
                         alt={product.name}
                         className="product-image"
                       />
+                      <button onClick={() => addToCart(product._id, "buy")}>
+                        Add to Cart (Buy)
+                      </button>
+                      <button onClick={() => addToCart(product._id, "rent")}>
+                        Add to Cart (Rent)
+                      </button>
                     </div>
                   ))
                 )}
@@ -73,7 +101,9 @@ function App() {
           }
         />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login setToken={setToken} />} /> {/* Pass setToken */}
+        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<div>404: Page Not Found</div>} />
       </Routes>
     </div>
   );

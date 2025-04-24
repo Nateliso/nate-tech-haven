@@ -70,7 +70,6 @@ function App() {
           element={
             <>
               {error && <p className="error">{error}</p>}
-              <p>Debug: Path {location.pathname}</p>
               <div className="product-grid">
                 {products.length === 0 && !error ? (
                   <p>Loading products...</p>

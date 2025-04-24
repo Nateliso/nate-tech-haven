@@ -146,23 +146,21 @@
 
 .cart {
   max-width: 800px;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 20px;
-}
-
-.cart-items {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  background: #f9f9f9; /* Light background */
+  color: #333; /* Dark text */
 }
 
 .cart-item {
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 8px;
-  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fff; /* White background */
+  color: #333; /* Dark text */
 }
 
-.cart-item h3 {
-  margin: 0 0 10px;
+.cart-item h3,
+.cart-item p {
+  color: #333; /* Ensure text is dark */
 }

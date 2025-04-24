@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const CartItem = require("../models/CartItem");
 const User = require("../models/User");
+const Order = require("../models/Order");
 const Product = require("../models/Product");
 
 // Middleware to verify JWT
@@ -46,6 +47,21 @@ router.get("/", auth, async (req, res) => {
     res.json(cartItems);
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+});
+
+// Checkout
+router.post("/checkout", auth, async (req, res) => {
+  try {
+    const cartItems = await CartItem.find({ userId: req.userId });
+    if (!cartItems || cartItems.length === 0) {
+      return res.status(400).json({ message: "Cart is empty" });
+    }
+    await CartItem.deleteMany({ userId: req.userId });
+    res.status(200).json({ message: "Checkout successful" });
+  } catch (err) {
+    console.error("Checkout error:", err);
+    res.status(500).json({ message: "Checkout failed" });
   }
 });
 

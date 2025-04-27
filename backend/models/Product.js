@@ -10,6 +10,7 @@ const ProductSchema = new mongoose.Schema({
   category: { type: String, enum: ["Audio", "Drones", "Laptops", "Keyboards", "VR", "Other"] },
   imageUrl: { type: String },
   rentBeforeBuy: { type: Boolean, default: false }, // Premium perk
+  rentable: { type: Boolean, default: false }, // Only specific gadgets
 });
 
 module.exports = mongoose.model("Product", ProductSchema);

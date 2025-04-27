@@ -12,6 +12,7 @@ function Cart() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        console.log("Cart items:", response.data);
         setCartItems(response.data);
       })
       .catch((error) => {
@@ -23,11 +24,12 @@ function Cart() {
   const handleCheckout = async () => {
     try {
       const token = localStorage.getItem("token");
-      await axios.post(
+      const response = await axios.post(
         "http://localhost:3000/api/cart/checkout",
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      console.log("Order created:", response.data.order);
       alert("Checkout successful!");
       setCartItems([]);
     } catch (err) {

@@ -24,4 +24,21 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Mark VR & Drone products as rentable
+router.put("/update-rentables", async (req, res) => {
+  try {
+    const result = await Product.updateMany(
+      { category: { $in: ["VR", "Drones"] } },
+      { $set: { rentable: true } }
+    );
+    res.status(200).json({
+      message: "Rentable products updated",
+      matched: result.matchedCount,
+      modified: result.modifiedCount
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;

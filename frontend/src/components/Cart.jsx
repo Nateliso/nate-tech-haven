@@ -30,7 +30,7 @@ function Cart() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log("Order created:", response.data.order);
-      alert("Checkout successful!");
+      alert("Checkout successful! Order placed.");
       setCartItems([]);
     } catch (err) {
       console.error("Checkout error:", err.response?.data || err.message);

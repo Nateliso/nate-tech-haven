@@ -4,6 +4,7 @@ import axios from "axios";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Cart from "./components/Cart";
+import Orders from "./components/Orders";
 import "./App.css";
 
 function App() {
@@ -53,7 +54,8 @@ function App() {
         <h1>Nate’s Tech Haven</h1>
         <nav>
           <Link to="/">Home</Link>
-          <Link to="/cart">Cart</Link>
+          {token && <Link to="/cart">Cart</Link>}
+          {token && <Link to="/orders">Orders</Link>}
           {token ? (
             <button onClick={handleLogout}>Log Out</button>
           ) : (
@@ -102,6 +104,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="*" element={<div>404: Page Not Found</div>} />
       </Routes>
     </div>

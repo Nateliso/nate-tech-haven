@@ -1,0 +1,36 @@
+.status-update {
+    margin-top: 10px;
+}
+  
+.status-update select {
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.orders {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+  
+.order {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+  
+.status-update {
+    margin-top: 10px;
+}
+  
+.status-update select {
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+  
+.error {
+    color: red;
+}

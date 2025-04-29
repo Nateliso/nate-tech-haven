@@ -1,23 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const jwt = require("jsonwebtoken");
 const CartItem = require("../models/CartItem");
-const User = require("../models/User");
 const Order = require("../models/Order");
 const Product = require("../models/Product");
-
-// Middleware to verify JWT
-const auth = (req, res, next) => {
-  const token = req.header("Authorization")?.replace("Bearer ", "");
-  if (!token) return res.status(401).json({ message: "No token provided" });
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.userId;
-    next();
-  } catch (err) {
-    res.status(401).json({ message: "Invalid token" });
-  }
-};
+const auth = require("../middleware/auth");
 
 // Add to cart
 router.post("/", auth, async (req, res) => {
@@ -63,7 +49,9 @@ router.post("/", auth, async (req, res) => {
       // Total rentals (orders + cart + new item)
       const totalRentals = activeRentals + cartRentals + quantity;
       if (totalRentals > 2) {
-        return res.status(400).json({ message: `Cannot rent more than 2 items at a time (current: ${activeRentals} active, ${cartRentals} in cart)` });
+        return res.status(400).json({ 
+          message: `Cannot rent more than 2 items at a time (current: ${activeRentals} active, ${cartRentals} in cart)` 
+        });
       }
     }
 
@@ -113,7 +101,9 @@ router.post("/checkout", auth, async (req, res) => {
       }, 0);
       const cartRentals = rentItems.reduce((sum, item) => sum + item.quantity, 0);
       if (activeRentals + cartRentals > 2) {
-        return res.status(400).json({ message: `Cannot rent more than 2 items at a time (current: ${activeRentals} active, ${cartRentals} in cart)` });
+        return res.status(400).json({ 
+          message: `Cannot rent more than 2 items at a time (current: ${activeRentals} active, ${cartRentals} in cart)` 
+        });
       }
     }
 

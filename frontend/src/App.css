@@ -41,11 +41,13 @@
   color: #007bff;
   text-decoration: none;
   cursor: pointer;
+  margin: 0 10px;
 }
 
 .top-bar nav button:hover,
 .top-bar nav a:hover {
   color: #0056b3;
+  text-decoration: underline;
 }
 
 /* === Product Grid Layout === */

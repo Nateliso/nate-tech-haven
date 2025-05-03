@@ -5,6 +5,10 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Cart from "./components/Cart";
 import Orders from "./components/Orders";
+import Checkout from "./components/Checkout";
+import Products from "./components/Products";
+import Returns from "./components/Returns";
+
 import "./App.css";
 
 function App() {
@@ -56,6 +60,8 @@ function App() {
           <Link to="/">Home</Link>
           {token && <Link to="/cart">Cart</Link>}
           {token && <Link to="/orders">Orders</Link>}
+          {token && <Link to="/returns">Returns</Link>}
+          {token && <Link to="/products">Products</Link>}
           {token ? (
             <button onClick={handleLogout}>Log Out</button>
           ) : (
@@ -81,19 +87,24 @@ function App() {
                       <h3>{product.name}</h3>
                       <p>{product.description || "No description available"}</p>
                       {product.buyPrice && <p>Buy: ${product.buyPrice.toFixed(2)}</p>}
-                      {product.rentPriceWeek && <p>Rent: ${product.rentPriceWeek.toFixed(2)}/week</p>}
-                      {product.rentBeforeBuy && <p>Rent Before Buy Available!</p>}
+                      {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
+                        <p>Rent: ${product.rentPriceWeek.toFixed(2)}/week</p>
+                      )}
                       <img
                         src={product.imageUrl || "https://via.placeholder.com/150"}
                         alt={product.name}
                         className="product-image"
                       />
-                      <button onClick={() => addToCart(product._id, "buy")}>
-                        Add to Cart (Buy)
-                      </button>
-                      <button onClick={() => addToCart(product._id, "rent")}>
-                        Add to Cart (Rent)
-                      </button>
+                      {product.buyPrice && product.stockBuy > 0 && (
+                        <button onClick={() => addToCart(product._id, "buy")}>
+                          Add to Cart (Buy)
+                        </button>
+                      )}
+                      {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
+                        <button onClick={() => addToCart(product._id, "rent")}>
+                          Add to Cart (Rent)
+                        </button>
+                      )}
                     </div>
                   ))
                 )}
@@ -105,6 +116,9 @@ function App() {
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/returns" element={<Returns />} />
         <Route path="*" element={<div>404: Page Not Found</div>} />
       </Routes>
     </div>

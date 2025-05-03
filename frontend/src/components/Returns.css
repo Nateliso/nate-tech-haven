@@ -1,0 +1,52 @@
+.returns {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+  
+.order {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+  
+.order h3 {
+    margin-top: 0;
+}
+  
+.order-item {
+    margin: 10px 0;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+  
+.order-item form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+  
+.order-item select,
+.order-item input {
+    padding: 5px;
+    margin-left: 5px;
+}
+  
+.order-item button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+  
+.order-item button:hover {
+    background-color: #c82333;
+}
+  
+.error {
+    color: red;
+    text-align: center;
+}

@@ -9,7 +9,6 @@ const ProductSchema = new mongoose.Schema({
   description: { type: String },
   category: { type: String, enum: ["Audio", "Drones", "Laptops", "Keyboards", "VR", "Other"] },
   imageUrl: { type: String },
-  rentBeforeBuy: { type: Boolean, default: false }, // Premium perk
   rentable: { type: Boolean, default: false }, // Only specific gadgets
 });
 

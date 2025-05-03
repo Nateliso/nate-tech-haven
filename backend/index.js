@@ -5,6 +5,7 @@ const productRoutes = require("./routes/products");
 const userRoutes = require("./routes/users");
 const cartRoutes = require("./routes/cart");
 const orderRoutes = require("./routes/orders");
+const returnsRoutes = require("./routes/returns");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/returns", returnsRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello from Tech Haven");

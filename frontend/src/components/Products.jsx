@@ -49,30 +49,39 @@ const Products = () => {
 
   return (
     <div className="products">
-      <h2>Products</h2>
+      <h2>Tech Gadgets</h2>
       {error && <p className="error">{error}</p>}
       {products.length === 0 && !error && <p>No products available</p>}
-      {products.map((product) => (
-        <div key={product._id} className="product">
-          <h3>{product.name}</h3>
-          <p>{product.description || "No description available"}</p>
-          <p>Category: {product.category}</p>
-          {product.buyPrice && <p>Buy: ${product.buyPrice.toFixed(2)}</p>}
-          {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
-            <p>Rent: ${product.rentPriceWeek.toFixed(2)}/week</p>
-          )}
-          {product.buyPrice && product.stockBuy > 0 && (
-            <button onClick={() => handleAddToCart(product._id, "buy", 1)}>
-              Add to Cart (Buy)
-            </button>
-          )}
-          {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
-            <button onClick={() => handleAddToCart(product._id, "rent", 1)}>
-              Add to Cart (Rent)
-            </button>
-          )}
-        </div>
-      ))}
+      <div className="product-grid">
+        {products.map((product) => (
+          <div key={product._id} className="product">
+            <img
+              src={product.imageUrl || "https://via.placeholder.com/150"}
+              alt={product.name}
+              className="product-image"
+            />
+            <h3>{product.name}</h3>
+            <p>{product.description || "No description available"}</p>
+            <p>Category: {product.category}</p>
+            {product.buyPrice && <p>Buy: ${product.buyPrice.toFixed(2)}</p>}
+            {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
+              <p>Rent: ${product.rentPriceWeek.toFixed(2)}/week</p>
+            )}
+            <div className="product-actions">
+              {product.buyPrice && product.stockBuy > 0 && (
+                <button onClick={() => handleAddToCart(product._id, "buy", 1)}>
+                  Add to Cart (Buy)
+                </button>
+              )}
+              {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
+                <button onClick={() => handleAddToCart(product._id, "rent", 1)}>
+                  Add to Cart (Rent)
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

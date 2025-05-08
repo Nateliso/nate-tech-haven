@@ -151,14 +151,14 @@ router.post("/checkout", auth, async (req, res) => {
 
       const stockField = item.type === "buy" ? "stockBuy" : "stockRent";
 
-      // ✅ Re-check stock in case it's changed since item was added to cart
+
       if (product[stockField] < item.quantity) {
         return res.status(400).json({
           message: `Insufficient stock for "${product.name}" (${item.type}). Only ${product[stockField]} left.`,
         });
       }
 
-      // ✅ Deduct stock now
+      // Deduct stock now
       product[stockField] -= item.quantity;
       await product.save();
 

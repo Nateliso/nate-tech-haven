@@ -1,0 +1,149 @@
+.cart {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cart h2 {
+  font-size: 2.2rem;
+  color: #00b7ff;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #333;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background: rgba(15, 32, 39, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.cart-item:hover {
+  transform: translateY(-3px);
+  background: rgba(36, 36, 36, 0.9);
+}
+
+.cart-item-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.cart-item-info h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 0;
+}
+
+.cart-item-info p {
+  font-size: 1.1rem;
+  color: #00ff88;
+  margin: 0;
+}
+
+.cart-item button {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cart-item button:hover {
+  background: #b02a37;
+}
+
+.total {
+  font-size: 1.4rem;
+  color: #00b7ff;
+  text-align: right;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.cart > a {
+  display: block;
+  width: 200px;
+  margin: 20px auto 0;
+  background: #00b7ff;
+  color: #fff;
+  padding: 12px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+
+.cart > a:hover {
+  background: #0099cc;
+}
+
+.error {
+  color: #dc3545;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.loading {
+  color: #00ff88;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.cart p {
+  color: #00ff88;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .cart-item button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cart > a {
+    width: 100%;
+  }
+}

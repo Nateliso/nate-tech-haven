@@ -1,6 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import "./Login.css";
 
 function Login({ setToken }) {
   const [email, setEmail] = useState("");
@@ -20,7 +22,7 @@ function Login({ setToken }) {
       localStorage.setItem("token", response.data.token);
       setToken(response.data.token);
       navigate("/", { replace: true });
-      console.log("Navigated to / after login");
+      alert("Logged in successfully!");
     } catch (err) {
       console.error("Login error:", err.response?.data || err.message);
       setError(err.response?.data?.message || "Login failed");
@@ -32,19 +34,21 @@ function Login({ setToken }) {
       <h2>Log In</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
           <input
             type="email"
+            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
           <input
             type="password"
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -58,5 +62,9 @@ function Login({ setToken }) {
     </div>
   );
 }
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};
 
 export default Login;

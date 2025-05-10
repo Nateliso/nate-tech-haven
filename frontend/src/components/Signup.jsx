@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom"; // Added Link import
+import { useNavigate, Link } from "react-router-dom";
+import "./Signup.css";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -13,12 +14,12 @@ function Signup() {
     e.preventDefault();
     console.log("Submitting signup:", { email, name });
     try {
-      const response = await axios.post("http://localhost:3000/api/users/signup", {
+      await axios.post("http://localhost:3000/api/users/signup", {
         email,
         password,
         name,
       });
-      console.log("Signup response:", response.data);
+      alert("Signed up successfully! Please log in.");
       navigate("/login", { replace: true });
     } catch (err) {
       console.error("Signup error:", err.response?.data || err.message);
@@ -31,28 +32,31 @@ function Signup() {
       <h2>Sign Up</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
           <input
             type="text"
+            id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Email:</label>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
           <input
             type="email"
+            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
           <input
             type="password"
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

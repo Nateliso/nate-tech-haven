@@ -1,20 +1,24 @@
 {
-  "name": "backend",
+  "name": "nate-tech-haven-backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nate",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^3.0.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0",
+    "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.13.2",
-    "pg": "^8.14.1"
+    "mongoose": "^8.13.2"
   },
-  "description": ""
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "description": "Backend for Nate's Tech Haven e-commerce platform"
 }

@@ -1,0 +1,38 @@
+.checkout {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.checkout form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+  
+.checkout input[type="radio"] {
+    margin-right: 10px;
+}
+
+.checkout input[type="text"] {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.checkout button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.checkout button:hover {
+    background-color: #218838;
+}
+
+.error {
+    color: red;
+}

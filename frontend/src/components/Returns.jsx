@@ -69,7 +69,11 @@ const Returns = () => {
               <p>Product: {item.productName}</p>
               <p>Type: {item.type}</p>
               <p>Quantity: {item.quantity}</p>
+<<<<<<< HEAD
               <p>Price: R{item.price.toFixed(2)}</p>
+=======
+              <p>Price: ${item.price.toFixed(2)}</p>
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
               {item.type === "rent" && (
                 <>
                   <p>Rental Status: {item.rentalStatus}</p>

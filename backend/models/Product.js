@@ -7,7 +7,11 @@ const ProductSchema = new mongoose.Schema({
   stockBuy: { type: Number, default: 0 },
   stockRent: { type: Number, default: 0 },
   description: { type: String },
+<<<<<<< HEAD
   category: { type: String, enum: ["Audio", "Drones", "Laptops", "Keyboards", "VR", "Tablets", "DIY Electronics", "Other"], required: true},
+=======
+  category: { type: String, enum: ["Audio", "Drones", "Laptops", "Keyboards", "VR", "Other"], required: true},
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
   imageUrl: { type: String, default: "https://via.placeholder.com/150" },
   rentable: { type: Boolean, default: false }, // Only specific gadgets
 });

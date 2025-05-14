@@ -63,19 +63,33 @@ const Products = () => {
             <h3>{product.name}</h3>
             <p>{product.description || "No description available"}</p>
             <p>Category: {product.category}</p>
+<<<<<<< HEAD
             {product.buyPrice && <p>Buy: R{product.buyPrice.toFixed(2)}</p>}
             {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
               <p>Rent: R{product.rentPriceWeek.toFixed(2)}/week</p>
+=======
+            {product.buyPrice && <p>Buy: ${product.buyPrice.toFixed(2)}</p>}
+            {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
+              <p>Rent: ${product.rentPriceWeek.toFixed(2)}/week</p>
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
             )}
             <div className="product-actions">
               {product.buyPrice && product.stockBuy > 0 && (
                 <button onClick={() => handleAddToCart(product._id, "buy", 1)}>
+<<<<<<< HEAD
                   Add to cart
+=======
+                  Add to Cart (Buy)
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
                 </button>
               )}
               {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
                 <button onClick={() => handleAddToCart(product._id, "rent", 1)}>
+<<<<<<< HEAD
                   Rent Item
+=======
+                  Add to Cart (Rent)
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
                 </button>
               )}
             </div>

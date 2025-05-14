@@ -29,12 +29,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
-app.use("/api/returns", returnsRoutes);
-
-
-app.get("/api/*", (req, res) => {
-  res.status(404).json({ message: "API endpoints are not accessible via GET" });
-});
 
 app.get("/", (req, res) => {
   res.send("Hello from Tech Haven");

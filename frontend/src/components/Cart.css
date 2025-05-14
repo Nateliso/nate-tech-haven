@@ -1,4 +1,5 @@
 .cart {
+<<<<<<< HEAD
   max-width: 900px;
   margin: 40px auto;
   padding: 30px;
@@ -12,6 +13,18 @@
   color: #00b7ff;
   text-align: center;
   margin-bottom: 30px;
+=======
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.cart h2 {
+  font-size: 2rem;
+  color: #00b7ff;
+  text-align: center;
+  margin-bottom: 20px;
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
 }
 
 .cart ul {
@@ -22,6 +35,7 @@
 .cart-item {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   justify-content: space-between;
   border: 1px solid #333;
   padding: 20px;
@@ -64,17 +78,50 @@
   font-size: 1.1rem;
   color: #00ff88;
   margin: 0;
+=======
+  border: 1px solid #333;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: #1a1a1a;
+}
+
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
+.cart-item h3 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.cart-item p {
+  font-size: 1rem;
+  color: #00ff88;
+  margin: 5px 0;
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
 }
 
 .cart-item button {
   background: #dc3545;
   color: #fff;
   border: none;
+<<<<<<< HEAD
   padding: 10px 20px;
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
+=======
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
 }
 
 .cart-item button:hover {
@@ -82,6 +129,7 @@
 }
 
 .total {
+<<<<<<< HEAD
   font-size: 1.4rem;
   color: #00b7ff;
   text-align: right;
@@ -101,6 +149,22 @@
   text-decoration: none;
   font-size: 1.1rem;
   transition: background 0.2s;
+=======
+  font-size: 1.2rem;
+  color: #00b7ff;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.cart > a {
+  display: inline-block;
+  background: #00b7ff;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 10px 0 0;
+  border-radius: 4px;
+  text-decoration: none;
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
 }
 
 .cart > a:hover {
@@ -110,8 +174,12 @@
 .error {
   color: #dc3545;
   text-align: center;
+<<<<<<< HEAD
   font-size: 1.1rem;
   margin-bottom: 20px;
+=======
+  font-size: 1rem;
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
 }
 
 .loading {
@@ -123,6 +191,7 @@
 .cart p {
   color: #00ff88;
   text-align: center;
+<<<<<<< HEAD
   font-size: 1.1rem;
 }
 
@@ -146,4 +215,7 @@
   .cart > a {
     width: 100%;
   }
+=======
+  font-size: 1rem;
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
 }

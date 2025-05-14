@@ -15,7 +15,10 @@ function App() {
   const [error, setError] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [loading, setLoading] = useState(true);
+<<<<<<< HEAD
   const [isNavOpen, setIsNavOpen] = useState(false);
+=======
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
   const location = useLocation();
 
   useEffect(() => {
@@ -26,7 +29,11 @@ function App() {
     console.log("Navigated to:", location.pathname, "State:", location.state);
     const fetchProducts = async () => {
       try {
+<<<<<<< HEAD
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products`);
+=======
+        const response = await axios.get("http://localhost:3000/api/products");
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
         setProducts(response.data);
         setLoading(false);
       } catch (err) {
@@ -41,7 +48,10 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setToken(null);
+<<<<<<< HEAD
     setIsNavOpen(false);
+=======
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
     alert("Logged out successfully!");
   };
 
@@ -78,10 +88,10 @@ function App() {
           {token ? (
             <button onClick={handleLogout}>Log Out</button>
           ) : (
-            <>
+            <React.Fragment>
               <Link to="/signup">Sign Up</Link>
               <Link to="/login">Log In</Link>
-            </>
+            </React.Fragment>
           )}
         </nav>
       </div>
@@ -89,11 +99,19 @@ function App() {
         <Route
           path="/"
           element={
+<<<<<<< HEAD
             <>
               <section className="hero">
                 <h2>Welcome to Nate’s Tech Haven</h2>
                 <p>A Safe Space for Nerds, Geeks, Tech Enthusiasts and All to Buy & Rent High Tech Gadgets.</p>
                 <Link to="/login">
+=======
+            <React.Fragment>
+              <section className="hero">
+                <h2>Welcome to Nate’s Tech Haven</h2>
+                <p>A Safe Space for Nerds to Buy & Rent Tech</p>
+                <Link to="/products">
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
                   <button className="shop-now">Shop Now</button>
                 </Link>
               </section>
@@ -113,6 +131,7 @@ function App() {
                       />
                       <h3>{product.name}</h3>
                       <p>{product.description || "No description available"}</p>
+<<<<<<< HEAD
                       {product.buyPrice && <p>Buy: R{product.buyPrice.toFixed(2)}</p>}
                       {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
                         <p>Rent: R{product.rentPriceWeek.toFixed(2)}/week</p>
@@ -131,11 +150,33 @@ function App() {
                           )}
                         </div>
                       )}
+=======
+                      {product.buyPrice && <p>Buy: ${product.buyPrice.toFixed(2)}</p>}
+                      {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
+                        <p>Rent: ${product.rentPriceWeek.toFixed(2)}/week</p>
+                      )}
+                      <div className="product-actions">
+                        {product.buyPrice && product.stockBuy > 0 && (
+                          <button onClick={() => addToCart(product._id, "buy")}>
+                            Add to Cart (Buy)
+                          </button>
+                        )}
+                        {product.rentable && product.stockRent > 0 && product.rentPriceWeek && (
+                          <button onClick={() => addToCart(product._id, "rent")}>
+                            Add to Cart (Rent)
+                          </button>
+                        )}
+                      </div>
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
                     </div>
                   ))}
                 </div>
               )}
+<<<<<<< HEAD
             </>
+=======
+            </React.Fragment>
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
           }
         />
         <Route path="/signup" element={<Signup />} />

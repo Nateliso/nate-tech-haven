@@ -21,6 +21,10 @@ router.get("/", auth, async (req, res) => {
 router.post("/", auth, async (req, res) => {
   try {
     const { productId, type, quantity } = req.body;
+<<<<<<< HEAD
+=======
+    console.log(`Add to cart: userId=${req.userId}, productId=${productId}, type=${type}, quantity=${quantity}`);
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
     
     if (!["buy", "rent"].includes(type)) {
       return res.status(400).json({ message: "Invalid type" });
@@ -58,6 +62,10 @@ router.post("/", auth, async (req, res) => {
         });
       });
       const totalRentals = cartRentalCount + orderRentalCount;
+<<<<<<< HEAD
+=======
+      console.log(`Cart rentals: ${cartRentalCount}, Order rentals: ${orderRentalCount}, Requested: ${quantity}, Total after: ${totalRentals + quantity}`);
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
       if (totalRentals + quantity > 2) {
         return res.status(400).json({ message: `Maximum 2 rentals allowed at a time. You have ${totalRentals} active rentals.` });
       }

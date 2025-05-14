@@ -65,6 +65,7 @@ const Cart = () => {
           <ul>
             {cartItems.map((item) => (
               <li key={item._id} className="cart-item">
+<<<<<<< HEAD
               <img
                 src={item.productId.imageUrl || "https://via.placeholder.com/150"}
                 alt={item.productId.name}
@@ -87,6 +88,27 @@ const Cart = () => {
             ))}
           </ul>
           <p className="total">Total: R{total.toFixed(2)}</p>
+=======
+                <img
+                  src={item.productId.imageUrl || "https://via.placeholder.com/150"}
+                  alt={item.productId.name}
+                  className="cart-item-image"
+                />
+                <div>
+                  <h3>{item.productId.name}</h3>
+                  <p>Type: {item.type}</p>
+                  <p>Quantity: {item.quantity}</p>
+                  <p>
+                    Price: $
+                    {(item.type === "buy" ? item.productId.buyPrice : item.productId.rentPriceWeek).toFixed(2)}
+                  </p>
+                  <button onClick={() => handleRemove(item._id)}>Remove</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <p className="total">Total: ${total.toFixed(2)}</p>
+>>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
           <Link to="/checkout" state={{ cartItems }}>
             Proceed to Checkout
           </Link>

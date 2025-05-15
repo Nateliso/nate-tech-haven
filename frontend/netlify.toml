@@ -5,5 +5,5 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://nate-tech-haven-backend.onrender.com/api/:splat"
+  to = "https://nate-tech-haven.onrender.com/api/:splat"
   status = 200

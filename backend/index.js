@@ -13,7 +13,7 @@ app.use(
   cors({
     origin: ["http://localhost:5173", "http://localhost:4173", "https://nate-tech-haven.netlify.app", ],
     allowedHeaders: ["Content-Type", "Authorization"],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );

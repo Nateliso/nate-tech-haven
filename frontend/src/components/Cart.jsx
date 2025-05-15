@@ -17,7 +17,7 @@ const Cart = () => {
           setLoading(false);
           return;
         }
-        const response = await axios.get("http://localhost:3000/api/cart", {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/cart`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("Cart items:", response.data);
@@ -35,7 +35,7 @@ const Cart = () => {
   const handleRemove = async (itemId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3000/api/cart/${itemId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/cart/${itemId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCartItems(cartItems.filter((item) => item._id !== itemId));

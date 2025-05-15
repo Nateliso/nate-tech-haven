@@ -32,14 +32,14 @@ const Checkout = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:3000/api/cart/checkout",
+        `${import.meta.env.VITE_API_URL}/api/cart/checkout`,
         { deliveryMethod },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log("Checkout response:", response.data);
 
       // Clear cart
-      await axios.delete("http://localhost:3000/api/cart", {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/cart`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

@@ -16,7 +16,7 @@ const Orders = () => {
           setLoading(false);
           return;
         }
-        const response = await axios.get("http://localhost:3000/api/orders", {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/orders`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log("Orders:", response.data);
@@ -38,7 +38,7 @@ const Orders = () => {
         throw new Error("No token found");
       }
       const response = await axios.patch(
-        `http://localhost:3000/api/orders/${orderId}`,
+        `${import.meta.env.VITE_API_URL}/api/orders/${orderId}`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -6,27 +6,53 @@
 
 .app {
   font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #142d36, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  min-height: 120vh;
+  color: #fff;
 }
 
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 .top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #1c2526;
   padding: 10px 20px;
-  background: #f8f9fa;
-  border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
   z-index: 1000;
   min-height: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .top-bar h1 {
   font-size: 1.5rem;
   color: #00b7ff;
   margin: 0;
-  color: #333;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #00ff88;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 nav {
@@ -34,37 +60,45 @@ nav {
   gap: 20px;
 }
 
-nav a, nav button {
+nav a,
+nav button {
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px 0;
-  display: block;
-  text-align: left; 
+  padding: 8px;
+  transition: color 0.2s;
 }
 
-nav a:hover, nav button:hover {
+nav a:hover,
+nav button:hover {
   color: #00ff88;
 }
 
 .hero {
   text-align: center;
   padding: 20px;
-  margin-top: 70px;
-  z-index: 1;
+  margin: 70px auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 110px);
 }
 
 .hero h2 {
   font-size: 2rem;
   color: #00b7ff;
+  margin-bottom: 1rem;
 }
 
 .hero p {
   font-size: 1.2rem;
   color: #fff;
+  margin-bottom: 1.5rem;
 }
 
 .shop-now {
@@ -74,132 +108,146 @@ nav a:hover, nav button:hover {
   padding: 10px 20px;
   border-radius: 4px;
   font-size: 1rem;
-  color: #007bff;
-  text-decoration: none;
   cursor: pointer;
+  transition: background 0.2s;
+  animation: softPulse 2.5s ease-in-out infinite;
 }
 
-.top-bar nav button:hover,
-.top-bar nav a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+@keyframes softPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
 }
 
-/* === Product Grid Layout === */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 30px auto;
-}
-
-.product-card {
-  border: 1px solid #333;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background: #fff;
-}
-
-.product-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.2em;
-}
-
-.product-card p {
-  margin: 5px 0;
-  color: #555;
-}
-
-.product-image {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-/* === Error Message === */
-.error {
-  color: red;
-  font-weight: bold;
-}
-
-/* === Auth Form Styles === */
-.auth-form {
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.auth-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.auth-form div {
-  margin-bottom: 15px;
-}
-
-.auth-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.auth-form input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.auth-form button {
-  width: 100%;
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  margin: 5px;
-  cursor: pointer;
-}
-
-.product-actions button:hover {
-  background: #0099cc;
+.shop-now:hover {
+  background: #00ff8879;
 }
 
 .error {
   color: #dc3545;
   text-align: center;
-  margin-bottom: 10px;
+  font-size: 1.1rem;
 }
 
-.auth-form a {
-  color: #007bff;
+.loading {
+  color: #00ff88;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
-.cart {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f9f9f9; /* Light background */
-  color: #333; /* Dark text */
+/* Desktop (Landscape, >1024px) */
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+  .top-bar {
+    padding: 12px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .top-bar h1 {
+    font-size: 1.75rem;
+  }
+  nav {
+    gap: 30px;
+  }
 }
 
-.cart-item {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-  background: #fff; /* White background */
-  color: #333; /* Dark text */
+/* Tablet (Pivot, 768px–1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .top-bar {
+    padding: 10px 20px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .hamburger {
+    display: block;
+  }
+  nav {
+    display: none;
+  }
+  nav.nav-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background: #1c2526;
+    padding: 10px;
+    z-index: 999;
+    gap: 15px; /* Consistent gap for tablet */
+  }
+  .hero {
+    max-width: 600px;
+    padding: 20px;
+  }
+  @media (orientation: portrait) {
+    .hero {
+      max-width: 90%;
+      margin: 60px auto;
+    }
+    .hero h2 {
+      font-size: 1.75rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+    }
+  }
 }
 
-.cart-item h3,
-.cart-item p {
-  color: #333; /* Ensure text is dark */
+/* Phone (Portrait, <768px) */
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .top-bar {
+    padding: 8px 15px;
+    min-height: 40px;
+    max-width: 95%; /* Scales with container */
+    margin: 0 auto;
+  }
+  .top-bar h1 {
+    font-size: 1.2rem;
+  }
+  .hamburger {
+    display: block;
+  }
+  nav {
+    display: none;
+  }
+  nav.nav-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    background: #1c2526;
+    padding: 10px;
+    z-index: 999;
+    max-height: 300px;
+    overflow-y: auto;
+    gap: 10px; /* Consistent gap for phone */
+  }
+  nav a,
+  nav button {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+  .hero {
+    margin: 60px auto;
+    padding: 15px;
+    max-width: 90%;
+    display: block;
+    text-align: center;
+  }
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .shop-now {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
 }

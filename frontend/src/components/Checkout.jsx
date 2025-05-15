@@ -74,19 +74,11 @@ const Checkout = () => {
           <ul>
             {cartItems.map((item, index) => (
               <li key={index}>
-<<<<<<< HEAD
                 {item.productId.name} ({item.type}, Qty: {item.quantity}, Price: R{item.productId[item.type === "buy" ? "buyPrice" : "rentPriceWeek"].toFixed(2)})
               </li>
             ))}
           </ul>
           <p>Total: R{total.toFixed(2)}</p>
-=======
-                {item.productId.name} ({item.type}, Qty: {item.quantity}, Price: ${item.productId[item.type === "buy" ? "buyPrice" : "rentPriceWeek"].toFixed(2)})
-              </li>
-            ))}
-          </ul>
-          <p>Total: ${total.toFixed(2)}</p>
->>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
           <form onSubmit={handlePaymentSubmit}>
             <h3>Delivery Method</h3>
             <label>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
+import PropTypes from "prop-types";
 import "./Login.css";
 
 function Login({ setToken }) {
@@ -12,43 +12,39 @@ function Login({ setToken }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting login:", { email, password });
     try {
-      const response = await axios.post("http://localhost:3000/api/users/login", {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/users/login`, {
         email,
         password,
       });
-      console.log("Login response:", response.data);
-      localStorage.setItem("token", response.data.token);
-      setToken(response.data.token);
-      navigate("/", { replace: true });
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      setToken(token);
       alert("Logged in successfully!");
+      navigate("/products");
     } catch (err) {
-      console.error("Login error:", err.response?.data || err.message);
       setError(err.response?.data?.message || "Login failed");
     }
   };
 
   return (
-    <div className="auth-form">
+     <div className="auth-form">
       <h2>Log In</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
+        <div>
+          <label>Email:</label>
           <input
             type="email"
-            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
+        <div>
+          <label>Password:</label>
           <input
             type="password"
-            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

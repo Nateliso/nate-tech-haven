@@ -1,52 +1,148 @@
 .returns {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px; 
+  font-family: Arial, sans-serif;
+  background: transparent;
+  min-height: 100vh;
+  color: #fff;
 }
-  
+
 .order {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
+  border: 1px solid #333;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background: rgba(15, 32, 39, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-  
+
 .order h3 {
-    margin-top: 0;
+  font-size: 1.5rem;
+  color: #00b7ff;
+  margin: 0 0 10px;
 }
-  
+
 .order-item {
-    margin: 10px 0;
-    padding: 10px;
-    border-top: 1px solid #eee;
+  margin: 10px 0;
+  padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-  
+
 .order-item form {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
 }
-  
+
 .order-item select,
 .order-item input {
-    padding: 5px;
-    margin-left: 5px;
+  padding: 5px;
+  margin-left: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #242424;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
 }
-  
+
+.order-item select:focus,
+.order-item input:focus {
+  outline: none;
+  border-color: #00b7ff;
+}
+
 .order-item button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 3px;
-    cursor: pointer;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
-  
+
 .order-item button:hover {
-    background-color: #c82333;
+  background: #c82333;
 }
-  
+
 .error {
-    color: red;
-    text-align: center;
+  color: #dc3545;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
+
+.warning {
+  color: orange;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
+
+/* Desktop (Landscape, >1024px) */
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+  .returns {
+    padding: 30px;
+  }
+  .order {
+    padding: 20px;
+  }
+  .order h3 {
+    font-size: 1.75rem;
+  }
+  .order-item form {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Tablet (Pivot, 768px–1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .returns {
+    max-width: 90%; /* Scales down from 800px */
+    padding: 20px;
+  }
+  @media (orientation: portrait) {
+    .returns {
+      max-width: 95%;
+    }
+    .order-item form {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+
+/* Phone (Portrait, <768px) */
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .returns {
+    max-width: 95%; /* Matches tablet portrait for consistency */
+    padding: 15px;
+  }
+  .order {
+    padding: 10px;
+  }
+  .order h3 {
+    font-size: 1.25rem;
+  }
+  .order-item {
+    padding: 8px;
+  }
+  .order-item form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .order-item select,
+  .order-item input,
+  .order-item button {
+    width: 100%;
+    margin: 5px 0;
+    padding: 6px;
+    font-size: 0.9rem;
+  }
 }

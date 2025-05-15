@@ -75,34 +75,20 @@ const Orders = () => {
               <h3>Order #{order._id.slice(-6)}</h3>
               <p>Status: {order.status}</p>
               <p>Delivery: {order.deliveryMethod}</p>
-<<<<<<< HEAD
               <p>Total Buy: R{order.totalBuy.toFixed(2)}</p>
               <p>Total Rent: R{order.totalRent.toFixed(2)}</p>
               <p>Rent Credit: R{order.rentCredit.toFixed(2)}</p>
-=======
-              <p>Total Buy: ${order.totalBuy.toFixed(2)}</p>
-              <p>Total Rent: ${order.totalRent.toFixed(2)}</p>
-              <p>Rent Credit: ${order.rentCredit.toFixed(2)}</p>
->>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
               <p>Placed: {new Date(order.createdAt).toLocaleDateString()}</p>
               {rentalDue && <p className="warning">Rental payment due for this order!</p>}
               <h4>Items:</h4>
               <ul>
                 {order.items.map((item, index) => (
                   <li key={index}>
-<<<<<<< HEAD
                     {item.productName} ({item.type}, Qty: {item.quantity}, Price: R{item.price.toFixed(2)}, Rental Status: {item.rentalStatus})
                     {item.returnRequest && (
                       <p>
                         Return: {item.returnRequest.method} on {new Date(item.returnRequest.scheduledDate).toLocaleDateString()}
                         {item.returnRequest.transportFee > 0 && ` (Fee: R${item.returnRequest.transportFee.toFixed(2)})`}
-=======
-                    {item.productName} ({item.type}, Qty: {item.quantity}, Price: ${item.price.toFixed(2)}, Rental Status: {item.rentalStatus})
-                    {item.returnRequest && (
-                      <p>
-                        Return: {item.returnRequest.method} on {new Date(item.returnRequest.scheduledDate).toLocaleDateString()}
-                        {item.returnRequest.transportFee > 0 && ` (Fee: $${item.returnRequest.transportFee.toFixed(2)})`}
->>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
                         , Status: {item.returnRequest.status}
                       </p>
                     )}

@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "env": {
     "browser": true,
     "es2021": true,
@@ -25,42 +24,11 @@
     "react/jsx-no-undef": "error",
     "react/react-in-jsx-scope": "off"
   },
+  "ignorePatterns": ["node_modules/", "dist/", "build/"],
   "settings": {
     "react": {
       "version": "detect"
     }
   }
 }
-=======
-    "env": {
-      "browser": true,
-      "es2021": true,
-      "node": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:jsx-a11y/recommended"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "plugins": ["react", "jsx-a11y"],
-    "rules": {
-      "react/prop-types": "off",
-      "jsx-a11y/anchor-is-valid": "off",
-      "no-unused-vars": ["error", { "varsIgnorePattern": "^_" }],
-      "react/jsx-no-undef": "error",
-      "react/react-in-jsx-scope": "off"
-    },
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    }
-  }
->>>>>>> 1502230535a9a982231c5e90b15d2e5ba922eced
+

@@ -1,0 +1,125 @@
+.products {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: transparent;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  border: 1px solid #333;
+  padding: 15px;
+  border-radius: 8px;
+  background: rgba(15, 32, 39, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-align: center;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  background: rgba(36, 36, 36, 0.9);
+}
+
+.product-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.product-card h3 {
+  font-size: 1.25rem;
+  color: #00b7ff;
+  margin: 0.5rem 0;
+}
+
+.product-card p {
+  font-size: 0.95rem;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-actions button {
+  background: #00b7ff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.product-actions button:hover {
+  background: #0099cc;
+}
+
+.error {
+  color: #dc3545;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
+
+.loading {
+  color: #00ff88;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+}
+
+/* Desktop (Landscape, >1024px) */
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .product-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Tablet (Pivot, 768px–1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (orientation: portrait) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+/* Phone (Portrait, <768px) */
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .products {
+    padding: 10px;
+  }
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-card {
+    padding: 10px;
+  }
+  .product-actions {
+    flex-direction: column;
+  }
+}
